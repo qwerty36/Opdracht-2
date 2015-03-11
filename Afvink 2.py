@@ -3,14 +3,25 @@
 ##9-03-2015####################################################################
 ###############################################################################
 
-file = open ("m_p53.gb", mode='r')
+from tkinter import *
+from tkinter import filedialog
+niets=Tk()
+file = filedialog.askopenfile()
+niets.destroy()
+niets.mainloop()
 lijst = []
+lijst2 = []
+codons = []
+codonfreq = []
+from collections import Counter
 
 def main():
     x = startread(file)
     gimmeinfo(x)
-    print (lijst)
-    
+    freq = {}
+    freq = Counter(lijst)
+    dictmod(freq)
+   
 def startread(seq):
     raw_data = ""
     startReading = False
@@ -20,13 +31,11 @@ def startread(seq):
         if "ORIGIN" in regel:
             startReading = True
     sequence = raw_data.replace(' ','').replace('\n','').replace('\r','')
-    #print(sequence)    
     return sequence
 
 def gimmeinfo(seq):
     z, s = 0, 3
     codonseq = ""
-    #print(seq)
     startindex = seq.index("atg")
     print('Startcodon on location: ' +str(startindex))
     for z in range (startindex, (len(seq)-startindex)):
@@ -40,4 +49,11 @@ def gimmeinfo(seq):
             s += 3
     for i in range(0, len(codonseq),3):
         lijst.append(codonseq[i:i+3])
+
+def dictmod(freq):
+    lijst2.append(freq.keys())
+    for x in freq:
+        codons.append(x)
+        codonfreq.append(freq[x])
+
 main()
