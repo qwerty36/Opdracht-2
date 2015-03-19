@@ -5,6 +5,8 @@
 
 from tkinter import *
 from tkinter import filedialog
+import matplotlib.pyplot as plt
+
 niets=Tk()
 file = filedialog.askopenfile()
 niets.destroy()
@@ -21,6 +23,7 @@ def main():
     freq = {}
     freq = Counter(lijst)
     dictmod(freq)
+    plotshit()
    
 def startread(seq):
     raw_data = ""
@@ -55,5 +58,10 @@ def dictmod(freq):
     for x in freq:
         codons.append(x)
         codonfreq.append(freq[x])
+        
+def plotshit():
+    p1 = plt.bar(codons, codonfreq, width, color='red')
+    plt.ylabel('Codonfrequentie')
+    plt.show()
 
 main()
