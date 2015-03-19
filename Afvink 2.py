@@ -25,11 +25,7 @@ def main():
     freq = {}
     freq = Counter(lijst)
     dictmod(freq)
-<<<<<<< HEAD
-    plotshit()
-=======
     maakGrafiek()
->>>>>>> origin/master
    
 def startread(seq):
     raw_data = ""
@@ -65,16 +61,11 @@ def dictmod(freq):
         codons.append(x)
         codonfreq.append(freq[x])
         
-def plotshit():
-    p1 = plt.bar(codons, codonfreq, width, color='red')
-    plt.ylabel('Codonfrequentie')
-    plt.show()
-
 def maakGrafiek():
-    xlabels = codons[0]
+    xlabels = codons
     x = np.arange(len(xlabels))
-    y = codonfreq[1]
+    y = codonfreq
     plt.xticks(x, xlabels, rotation="vertical")
-    ax = plt.plot(x,y)
+    plt.bar(x,y)
     
 main()
