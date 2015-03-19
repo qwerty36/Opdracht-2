@@ -16,6 +16,8 @@ lijst2 = []
 codons = []
 codonfreq = []
 from collections import Counter
+import matplotlib.pyplot as plt
+import numpy as np
 
 def main():
     x = startread(file)
@@ -23,7 +25,11 @@ def main():
     freq = {}
     freq = Counter(lijst)
     dictmod(freq)
+<<<<<<< HEAD
     plotshit()
+=======
+    maakGrafiek()
+>>>>>>> origin/master
    
 def startread(seq):
     raw_data = ""
@@ -64,4 +70,11 @@ def plotshit():
     plt.ylabel('Codonfrequentie')
     plt.show()
 
+def maakGrafiek():
+    xlabels = codons[0]
+    x = np.arange(len(xlabels))
+    y = codonfreq[1]
+    plt.xticks(x, xlabels, rotation="vertical")
+    ax = plt.plot(x,y)
+    
 main()
